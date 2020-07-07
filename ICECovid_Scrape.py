@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import requests
+import re
 import pandas as pd 
 from bs4 import BeautifulSoup
 
@@ -44,13 +45,39 @@ imm_df = pd.DataFrame(imm_covid) #Df for detainee covid19
 #Scrape ICE Employee COVID-19 Infections
 li_list = soup.findAll ('li')
 li_list_txt = [txt.get_text() for txt in li_list]
-beg_inx = li_list_txt.index ('Broadcast Message: Fall 2020 Guidance (July 2020)') + 1
+beg_inx = li_list_txt.index ('Frequently Asked Questions about Fall 2020 Semester Guidance') + 1
 end_inx = li_list_txt.index ('a 24-year-old Guatemalan national at La Palma Correctional Center in Arizona')
 covid_staff = li_list_txt [beg_inx:end_inx]
 covid_staff = [ele.replace ('at','') for ele in covid_staff]
 covid_staff = [ele.replace ('in','') for ele in covid_staff]
 
+#Extract number of COVID infections
+staff_len = len (covid_staff)
+staff_covid_list = []
+for ele in range (staff_len):
+    staff_covid_list.append([int(s) for s in covid_staff[ele].split() if s.isdigit()])
 
+staff_covid = []
+for ele in staff_covid_list:
+    for x in ele:
+        staff_covid.append (str(x))
+        
+#Extract location of COVID infections
+staff_det_1 = []
+for ele in covid_staff:
+    staff_det_1.append (''.join(i for i in ele if not i.isdigit()))
 
+staff_det = []
+for ele in staff_det_1:
+    staff_det.append (re.sub(r" ?\([^)]+\)", "", ele))
+staff_det = [ele.strip() for ele in staff_det]
 
+#Create Staff infection Dataframe
+staff_covid = {'Custody/AOR/Facility': staff_det,
+             'Staff Confirmed Cases':staff_covid}
 
+staff_df = pd.DataFrame(staff_covid) #Df for staff covid19
+
+#Print Staff and Inmate COVID19 cases
+print (imm_df)
+print (staff_df)
