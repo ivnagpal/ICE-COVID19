@@ -73,11 +73,18 @@ for ele in staff_det_1:
 staff_det = [ele.strip() for ele in staff_det]
 
 #Create Staff infection Dataframe
-staff_covid = {'Custody/AOR/Facility': staff_det,
+staffdic_covid = {'Custody/AOR/Facility':staff_det,
              'Staff Confirmed Cases':staff_covid}
+staff_df = pd.DataFrame(staffdic_covid) #Df for staff covid19
+staff_df = staff_df.replace ('Adelanto ICE Processg Center','Adelanto ICE Processing Center')
+staff_df = staff_df.replace ('Alexandria Stagg Facility','Alexandria Staging Facility')
+staff_df = staff_df.replace ('El Paso Processg Center','El Paso Service Processing Center')
+staff_df = staff_df.replace ('Elizabeth Contract Detention Facility','Elizabeth Detention Center')
+staff_df = staff_df.replace ('Eloy Detention Center','Eloy Federal Contract Facility')
+staff_df = staff_df.replace ('Essex County Correctional Facility','Essex County Jail')
+staff_df = staff_df.replace ('Florence Correctional Center','Florence Detention Center')
+staff_df = staff_df.replace ('Otay Mesa Detention Center','Otay Mesa Detention Center (San Diego CDF)')
+staff_df = staff_df.replace ('La Salle ICE Processg Center','LaSalle ICE Processing Center - Jena')
 
-staff_df = pd.DataFrame(staff_covid) #Df for staff covid19
-
-#Print Staff and Inmate COVID19 cases
-print (imm_df)
-print (staff_df)
+#Merging Staff and Detainee DF
+immfinal_df = pd.merge(imm_df, staff_df, how= 'outer', on='Custody/AOR/Facility')
