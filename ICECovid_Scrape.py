@@ -6,7 +6,7 @@ import re
 import pandas as pd 
 from bs4 import BeautifulSoup
 
-#Scrape ICE detainee COVID-19 Infections
+#Scrape ICE website for detainee COVID-19 infections
 url = 'https://www.ice.gov/coronavirus#wcm-survey-target-id'
 response = requests.get(url) 
 soup = BeautifulSoup(response.text, 'lxml') 
@@ -36,13 +36,15 @@ covid_current = covid_detain[1::4]
 covid_deaths = covid_detain[2::4]
 covid_total = covid_detain[3::4]
 
+#Dictionary of detainee COVID19 infections
 imm_covid = {'Custody/AOR/Facility': custody_facility,
              'Confirmed cases currently under isolation or monitoring':covid_current,
              'Detainee deaths':covid_deaths,'Total confirmed COVID-19 cases':covid_total}
 
+#DF of detainee COVID19 infections
 imm_df = pd.DataFrame(imm_covid) #Df for detainee covid19
 
-#Scrape ICE Employee COVID-19 Infections
+#Scrape ICE website for staff COVID-19 infections
 li_list = soup.findAll ('li')
 li_list_txt = [txt.get_text() for txt in li_list]
 beg_inx = li_list_txt.index ('Frequently Asked Questions about Fall 2020 Semester Guidance') + 1
@@ -51,7 +53,7 @@ covid_staff = li_list_txt [beg_inx:end_inx]
 covid_staff = [ele.replace ('at','') for ele in covid_staff]
 covid_staff = [ele.replace ('in','') for ele in covid_staff]
 
-#Extract number of COVID infections
+#Extract number of staff COVID19 infections
 staff_len = len (covid_staff)
 staff_covid_list = []
 for ele in range (staff_len):
@@ -62,7 +64,7 @@ for ele in staff_covid_list:
     for x in ele:
         staff_covid.append (str(x))
         
-#Extract location of COVID infections
+#Extract facility of staff COVID19 infections
 staff_det_1 = []
 for ele in covid_staff:
     staff_det_1.append (''.join(i for i in ele if not i.isdigit()))
@@ -72,10 +74,14 @@ for ele in staff_det_1:
     staff_det.append (re.sub(r" ?\([^)]+\)", "", ele))
 staff_det = [ele.strip() for ele in staff_det]
 
-#Create Staff infection Dataframe
+#Dictionary of Staff COVID19 infections
 staffdic_covid = {'Custody/AOR/Facility':staff_det,
              'Staff Confirmed Cases':staff_covid}
-staff_df = pd.DataFrame(staffdic_covid) #Df for staff covid19
+
+#DF of Staff COVID19 infections
+staff_df = pd.DataFrame(staffdic_covid)
+
+#Changing name of detention facilities to conform with imm_df
 staff_df = staff_df.replace ('Adelanto ICE Processg Center','Adelanto ICE Processing Center')
 staff_df = staff_df.replace ('Alexandria Stagg Facility','Alexandria Staging Facility')
 staff_df = staff_df.replace ('El Paso Processg Center','El Paso Service Processing Center')
