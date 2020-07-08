@@ -94,3 +94,30 @@ staff_df = staff_df.replace ('La Salle ICE Processg Center','LaSalle ICE Process
 
 #Merging Staff and Detainee DF
 immfinal_df = pd.merge(imm_df, staff_df, how= 'outer', on='Custody/AOR/Facility')
+immfinal_df[['Confirmed cases currently under isolation or monitoring','Detainee deaths',
+             'Total confirmed COVID-19 cases','Staff Confirmed Cases']] = immfinal_df[['Confirmed cases currently under isolation or monitoring','Detainee deaths',
+                                                                                       'Total confirmed COVID-19 cases','Staff Confirmed Cases']].apply(pd.to_numeric)
+                                                                                       
+#Detention with maximum cases                                                                          
+curr_max = immfinal_df['Confirmed cases currently under isolation or monitoring'].max()
+curr_max_fac = immfinal_df.loc[immfinal_df['Confirmed cases currently under isolation or monitoring'] == curr_max]
+curr_max_fac = curr_max_fac ['Custody/AOR/Facility'].item()
+print ('Facility with most current confirmed detainee cases:',curr_max_fac,'w/',curr_max,"cases")
+
+detdeath_max = immfinal_df['Detainee deaths'].max()
+death_max_fac = immfinal_df.loc[immfinal_df['Detainee deaths'] == detdeath_max]
+death_max_fac = death_max_fac ['Custody/AOR/Facility']
+for ele in death_max_fac:
+    print ('Facility with most detainee deaths:',ele,'w/',detdeath_max,"death/s")
+
+dettot_max = immfinal_df['Total confirmed COVID-19 cases'].max()
+dettot_max_fac = immfinal_df.loc[immfinal_df['Total confirmed COVID-19 cases'] == dettot_max]
+dettot_max_fac = dettot_max_fac ['Custody/AOR/Facility'].item()
+print ('Facility with most total confirmed detainee cases:',dettot_max_fac,'w/', dettot_max,"cases")
+
+
+staffcon_max = immfinal_df['Staff Confirmed Cases'].max()
+staffcon_max_fac = immfinal_df.loc[immfinal_df['Staff Confirmed Cases'] == staffcon_max]
+staffcon_max_fac = staffcon_max_fac ['Custody/AOR/Facility'].item()
+print ('Facility with most staff cases:',staffcon_max_fac,'w/',staffcon_max,"cases")
+
