@@ -3,6 +3,7 @@
 
 import requests
 import re
+import os
 import pandas as pd 
 from bs4 import BeautifulSoup
 
@@ -92,6 +93,7 @@ staff_df = staff_df.replace ('Florence Correctional Center','Florence Detention 
 staff_df = staff_df.replace ('Otay Mesa Detention Center','Otay Mesa Detention Center (San Diego CDF)')
 staff_df = staff_df.replace ('La Salle ICE Processg Center','LaSalle ICE Processing Center - Jena')
 
+
 #Merging Staff and Detainee DF
 immfinal_df = pd.merge(imm_df, staff_df, how= 'outer', on='Custody/AOR/Facility')
 immfinal_df[['Confirmed cases currently under isolation or monitoring','Detainee deaths',
@@ -121,3 +123,6 @@ staffcon_max_fac = immfinal_df.loc[immfinal_df['Staff Confirmed Cases'] == staff
 staffcon_max_fac = staffcon_max_fac ['Custody/AOR/Facility'].item()
 print ('Facility with most staff cases:',staffcon_max_fac,'w/',staffcon_max,"cases")
 
+#Create CSV File of ICE COVID19 Data
+path = os.getcwd() + '/imm_df.csv'
+immfinal_df.to_csv (path, index = False, header=True)
