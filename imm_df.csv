@@ -1,7 +1,6 @@
 Custody/AOR/Facility,Confirmed cases currently under isolation or monitoring,Detainee deaths,Total confirmed COVID-19 cases,Staff Confirmed Cases
 Charleston County Detention Center,2.0,0.0,2.0,
-"Folkston ICE Processing Center
-        (D. Ray James)",6.0,0.0,6.0,
+Folkston ICE Processing Center(D. Ray James),6.0,0.0,6.0,
 Irwin County Detention Center,14.0,0.0,16.0,
 Stewart Detention Center,33.0,1.0,67.0,2.0
 Bristol County Detention Center,0.0,0.0,1.0,
@@ -26,7 +25,7 @@ Torrance County Detention Center,31.0,0.0,55.0,
 Houston Contract Detention Facility,2.0,0.0,106.0,2.0
 IAH Polk Adult Detention Facility,0.0,0.0,16.0,
 Joe Corley Detention Center,1.0,0.0,42.0,
-Montgomery Processing Center (Houston),23.0,0.0,202.0,
+Montgomery Processing Center (Houston),22.0,0.0,202.0,
 Adelanto ICE Processing Center,11.0,0.0,14.0,1.0
 Broward Transitional Center,9.0,0.0,29.0,
 Glades County Detention Center,49.0,0.0,114.0,
@@ -45,7 +44,7 @@ Pine Prairie ICE Processing Center,1.0,0.0,31.0,
 Richwood Correctional Center,0.0,0.0,65.0,
 River Correctional Center,5.0,0.0,7.0,
 South Louisiana Correctional Center,2.0,0.0,2.0,
-Winn Correctional Center,5.0,0.0,126.0,
+Winn Correctional Center,6.0,0.0,127.0,
 Bergen County Jail,0.0,0.0,2.0,1.0
 Hudson County Jail,5.0,0.0,14.0,1.0
 Pike County Correctional Facility,0.0,0.0,22.0,
@@ -56,6 +55,7 @@ Florence Detention Center,4.0,0.0,36.0,1.0
 La Palma Correctional Facility,7.0,0.0,99.0,
 Nevada Southern Detention Center,8.0,0.0,8.0,
 Nye County Jail,23.0,0.0,23.0,
+Washington County Jail,1.0,0.0,1.0,
 El Valle Detention Facility,2.0,0.0,2.0,
 Karnes County Residential Center,24.0,0.0,35.0,
 Port Isabel Detention Center,10.0,0.0,84.0,
@@ -64,8 +64,8 @@ Webb County Detention Center (CCA),6.0,0.0,7.0,
 Imperial Regional Detention Facility,0.0,0.0,2.0,
 Otay Mesa Detention Center (San Diego CDF),4.0,1.0,168.0,11.0
 San Luis Regional Detention Center,2.0,0.0,7.0,
-"Tacoma ICE Processing Center
-        (Northwest Detention Center)",1.0,0.0,4.0,
+Mesa Verde ICE Processing Center,1.0,0.0,1.0,
+Tacoma ICE Processing Center(Northwest Detention Center),1.0,0.0,4.0,
 Polk County Jail,1.0,0.0,12.0,
 Caroline Detention Facility,0.0,0.0,3.0,
 Immigration Centers of America - Farmville,102.0,0.0,106.0,
