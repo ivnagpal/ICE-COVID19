@@ -16,7 +16,6 @@ beg_ind = td_list_txt.index ('Atlanta Field Office') + 1
 end_ind = td_list_txt.index ('TOTAL')
 covid_detain = td_list_txt [beg_ind:end_ind]
 
-
 #Remove "Field Office" Headers
 field_office = ['Atlanta Field Office','Baltimore Field Office','Boston Field Office','Buffalo Field Office',
                 'Chicago Field Office','Dallas Field Office','Denver Field Office',
