@@ -124,3 +124,15 @@ print ('Facility with most staff cases:',staffcon_max_fac,'w/',staffcon_max,"cas
 #Create CSV File of ICE COVID19 Data
 path = os.getcwd() + '/imm_df.csv'
 immfinal_df.to_csv (path, index = False, header=True)
+
+#ICE Last Update
+p_list = soup.findAll ('p')
+p_list_txt = [txt.get_text() for txt in p_list]
+staff_update = p_list_txt[105].replace('Updated','').strip()
+detainee_update = p_list_txt[108].replace('Updated','').strip()
+staff_update_string = 'ICE Employee Data Last Updated on' + ' ' + staff_update
+detainee_update_string = 'ICE Detainee Data Last Updated on:' + ' ' + detainee_update
+
+
+
+
