@@ -46,7 +46,7 @@ imm_df = pd.DataFrame(imm_covid) #Df for detainee covid19
 #Scrape ICE website for staff COVID-19 infections
 li_list = soup.findAll ('li')
 li_list_txt = [txt.get_text() for txt in li_list]
-beg_inx = li_list_txt.index ('Frequently Asked Questions about Fall 2020 Semester Guidance') + 1
+beg_inx = li_list_txt.index ('Optional COVID-19 School Reporting Template that schools can use to report temporary procedural adaptations (Mar. 2020)') + 1
 end_inx = li_list_txt.index ('a 24-year-old Guatemalan national at La Palma Correctional Center in Arizona')
 covid_staff = li_list_txt [beg_inx:end_inx]
 covid_staff = [ele.replace ('at','') for ele in covid_staff]
@@ -132,7 +132,7 @@ staff_update = p_list_txt[105].replace('Updated','').strip()
 detainee_update = p_list_txt[108].replace('Updated','').strip()
 staff_update_string = 'ICE Employee Data Last Updated on' + ' ' + staff_update
 detainee_update_string = 'ICE Detainee Data Last Updated on:' + ' ' + detainee_update
-
-
+print (staff_update_string)
+print (detainee_update_string)
 
 
