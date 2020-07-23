@@ -3,8 +3,8 @@ Charleston County Detention Center,2.0,0.0,2.0,
 Columbia Regional Care Center,1.0,0.0,1.0,
 "Folkston ICE Processing Center
         (D. Ray James)",15.0,0.0,15.0,
-Irwin County Detention Center,13.0,0.0,19.0,
-Stewart Detention Center,66.0,1.0,127.0,2.0
+Irwin County Detention Center,14.0,0.0,20.0,
+Stewart Detention Center,70.0,1.0,128.0,2.0
 Bristol County Detention Center,0.0,0.0,1.0,
 Franklin County House of Corrections,6.0,0.0,7.0,
 Strafford County Corrections,2.0,0.0,2.0,
@@ -21,18 +21,18 @@ Aurora Contract Detention Facility ,0.0,0.0,17.0,
 Calhoun County Correctional Center,3.0,0.0,7.0,
 Morrow County Correctional Facility,0.0,0.0,48.0,
 Saint Clair County Jail,3.0,0.0,10.0,
-El Paso Service Processing Center,22.0,0.0,155.0,1.0
+El Paso Service Processing Center,23.0,0.0,156.0,1.0
 Otero County Processing Center,0.0,0.0,142.0,
 Torrance County Detention Center,0.0,0.0,55.0,
 Houston Contract Detention Facility,18.0,0.0,124.0,2.0
 IAH Polk Adult Detention Facility,0.0,0.0,16.0,
 Joe Corley Detention Center,6.0,0.0,47.0,
-Montgomery Processing Center (Houston),4.0,0.0,206.0,
+Montgomery Processing Center (Houston),2.0,0.0,206.0,
 Adelanto ICE Processing Center,2.0,0.0,10.0,1.0
 Baker County Detention Center,2.0,0.0,2.0,
 Broward Transitional Center,9.0,0.0,36.0,
 Glades County Detention Center,11.0,1.0,138.0,
-Krome North Service Processing Center,60.0,0.0,94.0,
+Krome North Service Processing Center,67.0,0.0,101.0,
 Wakulla County Jail,0.0,0.0,1.0,
 Elizabeth Detention Center,0.0,0.0,18.0,2.0
 Essex County Jail,5.0,0.0,8.0,1.0
@@ -53,16 +53,17 @@ Bergen County Jail,0.0,0.0,2.0,1.0
 Hudson County Jail,5.0,0.0,14.0,1.0
 Pike County Correctional Facility,0.0,0.0,22.0,
 York County Prison,0.0,0.0,1.0,
-CCA Florence Correctional Center,2.0,0.0,15.0,
+CCA Florence Correctional Center,3.0,0.0,16.0,
 Eloy Federal Contract Facility,34.0,0.0,252.0,1.0
 Florence Detention Center,12.0,0.0,48.0,1.0
-La Palma Correctional Facility,4.0,0.0,105.0,
+La Palma Correctional Facility,3.0,0.0,105.0,
+Henderson Detention Center,1.0,0.0,1.0,
 Nevada Southern Detention Center,5.0,0.0,10.0,
 Nye County Jail,30.0,0.0,32.0,
 Washington County Jail,1.0,0.0,1.0,
-El Valle Detention Facility,4.0,0.0,4.0,
-Karnes County Residential Center,22.0,0.0,42.0,
-Port Isabel Detention Center,9.0,0.0,101.0,
+El Valle Detention Facility,8.0,0.0,8.0,
+Karnes County Residential Center,27.0,0.0,47.0,
+Port Isabel Detention Center,26.0,0.0,120.0,
 Rio Grande Detention Center,3.0,0.0,3.0,
 South Texas Family Residential Center (Dilley),1.0,0.0,1.0,
 South Texas ICE Processing Center (Pearsall),80.0,0.0,129.0,
@@ -73,8 +74,9 @@ San Luis Regional Detention Center,1.0,0.0,8.0,
 Mesa Verde ICE Processing Center,1.0,0.0,1.0,
 "Tacoma ICE Processing Center
         (Northwest Detention Center)",4.0,0.0,8.0,
+Freeborn County Adult Detention Center,1.0,0.0,1.0,
 Polk County Jail,1.0,0.0,12.0,
-Caroline Detention Facility,0.0,0.0,3.0,
+Caroline Detention Facility,1.0,0.0,4.0,
 Immigration Centers of America - Farmville,268.0,0.0,315.0,
 Aurora Contract Detention Facility,,,,2.0
 Butler County Jail,,,,1.0
