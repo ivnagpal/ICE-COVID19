@@ -10,6 +10,7 @@ import datetime
 #Date and Time of Program
 dt = datetime.datetime.now().strftime('%m/%d/%y')
 
+
 #Scrape ICE website for detainee COVID-19 infections
 url = 'https://www.ice.gov/coronavirus#wcm-survey-target-id'
 response = requests.get(url) 
@@ -19,6 +20,17 @@ td_list_txt = [txt.get_text() for txt in td_list]
 beg_ind = td_list_txt.index ('Atlanta Field Office') + 1
 end_ind = td_list_txt.index ('TOTAL')
 covid_detain = td_list_txt [beg_ind:end_ind]
+
+#ICE Last Update
+p_list = soup.findAll ('p')
+p_list_txt = [txt.get_text() for txt in p_list]
+staff_update = p_list_txt[106].replace('Updated','').strip()
+detainee_update = p_list_txt[109].replace('Updated','').strip()
+staff_update_string = 'ICE Employee Data Last Updated on' + ' ' + staff_update
+detainee_update_string = 'ICE Detainee Data Last Updated on:' + ' ' + detainee_update
+print (staff_update_string)
+print (detainee_update_string)
+
 
 #Remove "Field Office" Headers
 field_office = ['Atlanta Field Office','Baltimore Field Office','Boston Field Office','Buffalo Field Office',
@@ -76,6 +88,8 @@ staff_det = []
 for ele in staff_det_1:
     staff_det.append (re.sub(r" ?\([^)]+\)", "", ele))
 staff_det = [ele.strip() for ele in staff_det]
+staff_det = staff_det[3:]
+staff_covid = staff_covid [1:]
 
 #Dictionary of Staff COVID19 infections
 staffdic_covid = {'Custody/AOR/Facility':staff_det,
@@ -126,18 +140,11 @@ staffcon_max_fac = immfinal_df.loc[immfinal_df[dt + ':Staff Confirmed Cases'] ==
 staffcon_max_fac = staffcon_max_fac ['Custody/AOR/Facility'].item()
 print ('Facility with most staff cases:',staffcon_max_fac,'w/',staffcon_max,"cases")
 
-#Create CSV File of ICE COVID19 Data
+#Create CSV File of Updated ICE COVID19 Data
+df = pd.read_csv('imm_df.csv') 
+immfinal_df= pd.merge(df, immfinal_df, on='Custody/AOR/Facility', how='right')
 path = os.getcwd() + '/imm_df.csv'
 immfinal_df.to_csv (path, index = False, header=True)
 
-#ICE Last Update
-p_list = soup.findAll ('p')
-p_list_txt = [txt.get_text() for txt in p_list]
-staff_update = p_list_txt[105].replace('Updated','').strip()
-detainee_update = p_list_txt[108].replace('Updated','').strip()
-staff_update_string = 'ICE Employee Data Last Updated on' + ' ' + staff_update
-detainee_update_string = 'ICE Detainee Data Last Updated on:' + ' ' + detainee_update
-print (staff_update_string)
-print (detainee_update_string)
 
 

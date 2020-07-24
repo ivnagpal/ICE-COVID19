@@ -1,8 +1,6 @@
 Custody/AOR/Facility,07/23/20:Confirmed cases currently under isolation or monitoring,07/23/20:Detainee deaths,07/23/20:Total confirmed COVID-19 cases,07/23/20:Staff Confirmed Cases
 Charleston County Detention Center,2,0,2,
 Columbia Regional Care Center,1,0,1,
-"Folkston ICE Processing Center
-        (D. Ray James)",15,0,15,
 Irwin County Detention Center,14,0,20,
 Stewart Detention Center,70,1,128,2
 Bristol County Detention Center,0,0,1,
@@ -72,8 +70,6 @@ Imperial Regional Detention Facility,0,0,2,
 Otay Mesa Detention Center (San Diego CDF),3,1,169,11
 San Luis Regional Detention Center,1,0,8,
 Mesa Verde ICE Processing Center,1,0,1,
-"Tacoma ICE Processing Center
-        (Northwest Detention Center)",4,0,8,
 Freeborn County Adult Detention Center,1,0,1,
 Polk County Jail,1,0,12,
 Caroline Detention Facility,1,0,4,
@@ -81,3 +77,5 @@ Immigration Centers of America - Farmville,268,0,315,
 Aurora Contract Detention Facility,,,,2
 Butler County Jail,,,,1
 T. Don Hutto Residential Center,,,,1
+Folkston ICE Processing Center(D. Ray James),15,0,15,
+Tacoma ICE Processing Center(Northwest Detention Center),4,0,8,
