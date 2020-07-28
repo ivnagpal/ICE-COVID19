@@ -11,17 +11,12 @@ import datetime
 dt = datetime.datetime.now().strftime('%m/%d/%y')
 
 
-#Scrape ICE website for detainee COVID-19 infections
+#Parse ICE Website
 url = 'https://www.ice.gov/coronavirus#wcm-survey-target-id'
 response = requests.get(url) 
 soup = BeautifulSoup(response.text, 'lxml') 
-td_list = soup.findAll ('td')
-td_list_txt = [txt.get_text() for txt in td_list]
-beg_ind = td_list_txt.index ('Atlanta Field Office') + 1
-end_ind = td_list_txt.index ('TOTAL')
-covid_detain = td_list_txt [beg_ind:end_ind]
 
-#ICE Last Update
+#Information on latest ICE Update
 p_list = soup.findAll ('p')
 p_list_txt = [txt.get_text() for txt in p_list]
 staff_update = p_list_txt[106].replace('Updated','').strip()
@@ -31,6 +26,13 @@ detainee_update_string = 'ICE Detainee Data Last Updated on:' + ' ' + detainee_u
 print (staff_update_string)
 print (detainee_update_string)
 
+
+#Scrape for detainee COVID infections
+td_list = soup.findAll ('td')
+td_list_txt = [txt.get_text() for txt in td_list]
+beg_ind = td_list_txt.index ('Atlanta Field Office') + 1
+end_ind = td_list_txt.index ('TOTAL')
+covid_detain = td_list_txt [beg_ind:end_ind]
 
 #Remove "Field Office" Headers
 field_office = ['Atlanta Field Office','Baltimore Field Office','Boston Field Office','Buffalo Field Office',
