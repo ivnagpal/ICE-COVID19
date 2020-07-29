@@ -142,11 +142,25 @@ staffcon_max_fac = immfinal_df.loc[immfinal_df[dt + ':Staff Confirmed Cases'] ==
 staffcon_max_fac = staffcon_max_fac ['Custody/AOR/Facility'].item()
 print ('Facility with most staff cases:',staffcon_max_fac,'w/',staffcon_max,"cases")
 
-#Create CSV File of Updated ICE COVID19 Data
+#Create CSV File of Updated ICE COVID19 Data w/ Historical Data
 df = pd.read_csv('imm_df.csv') 
 immfinal_df= pd.merge(df, immfinal_df, on='Custody/AOR/Facility', how='right')
+columns = immfinal_df.columns.tolist()
+columns.remove('Custody/AOR/Facility')
+columns_r = columns[::-1]
+columns_r.insert(0,'Custody/AOR/Facility')
+immfinal_dfr = immfinal_df[columns_r]
+
+# CSV File with Time Ascending 
 path = os.getcwd() + '/imm_df.csv'
 immfinal_df.to_csv (path, index = False, header=True)
+
+# CSV File with Data Backward in time 
+path2 = os.getcwd() + '/immdet_df.csv'
+immfinal_dfr.to_csv (path2, index = False, header=True)
+
+
+
 
 
 
