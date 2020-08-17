@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import requests
+import numpy as np
 import re
 import os
 import pandas as pd 
@@ -114,6 +115,7 @@ staff_df = staff_df.replace ('La Salle ICE Processg Center','LaSalle ICE Process
 
 #Merging Staff and Detainee DF
 immfinal_df = pd.merge(imm_df, staff_df, how= 'outer', on= 'Custody/AOR/Facility')
+immfinal_df = immfinal_df.replace(r'^\s*$', np.nan, regex=True)
 immfinal_df [[dt + ':Confirmed cases currently under isolation or monitoring',dt + ':Detainee deaths'
               ,dt + ':Total confirmed COVID-19 cases',dt + ':Staff Confirmed Cases']] = immfinal_df [[dt + ':Confirmed cases currently under isolation or monitoring',dt + ':Detainee deaths'
               ,dt + ':Total confirmed COVID-19 cases',dt + ':Staff Confirmed Cases']].apply(pd.to_numeric)
@@ -144,7 +146,7 @@ print ('Facility with most staff cases:',staffcon_max_fac,'w/',staffcon_max,"cas
 
 #Create CSV File of Updated ICE COVID19 Data w/ Historical Data
 df = pd.read_csv('imm_df.csv') 
-immfinal_df= pd.merge(df, immfinal_df, on='Custody/AOR/Facility', how='right')
+immfinal_df= pd.merge(df, immfinal_df, on='Custody/AOR/Facility', how='outer')
 columns = immfinal_df.columns.tolist()
 columns.remove('Custody/AOR/Facility')
 columns_r = columns[::-1]
