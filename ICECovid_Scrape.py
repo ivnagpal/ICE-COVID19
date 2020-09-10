@@ -8,6 +8,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 import datetime
 
+#DATA SCRAIPING
 #Date and Time of Program
 dt = datetime.datetime.now().strftime('%m/%d/%y')
 
@@ -120,12 +121,32 @@ immfinal_df [[dt + ':Confirmed cases currently under isolation or monitoring',dt
               ,dt + ':Total confirmed COVID-19 cases',dt + ':Staff Confirmed Cases']] = immfinal_df [[dt + ':Confirmed cases currently under isolation or monitoring',dt + ':Detainee deaths'
               ,dt + ':Total confirmed COVID-19 cases',dt + ':Staff Confirmed Cases']].apply(pd.to_numeric)
                                                                                        
+
+#Create CSV File of Updated ICE COVID19 Data w/ Historical Data
+df = pd.read_csv('imm_df.csv') 
+immfinal_df= pd.merge(df, immfinal_df, on='Custody/AOR/Facility', how='outer')
+columns = immfinal_df.columns.tolist()
+columns.remove('Custody/AOR/Facility')
+columns_r = columns[::-1]
+columns_r.insert(0,'Custody/AOR/Facility')
+immfinal_dfr = immfinal_df[columns_r]
+
+# CSV File Time Ascending 
+path = os.getcwd() + '/imm_df.csv'
+immfinal_df.to_csv (path, index = False, header=True)
+
+# CSV File Time Descending
+path2 = os.getcwd() + '/immdet_df.csv'
+immfinal_dfr.to_csv (path2, index = False, header=True)
+
+#SUMMARY STATISTICS
 #Detention with maximum cases
 max_confirm = dt + ':Confirmed cases currently under isolation or monitoring'                                                                          
 curr_max = immfinal_df[max_confirm].max()
 curr_max_fac = immfinal_df.loc[immfinal_df[dt + ':Confirmed cases currently under isolation or monitoring'] == curr_max]
-curr_max_fac = curr_max_fac ['Custody/AOR/Facility'].item()
-print ('Facility with most current confirmed detainee cases:',curr_max_fac,'w/',curr_max,"cases")
+curr_max_fac = curr_max_fac ['Custody/AOR/Facility'].tolist()
+for ele in curr_max_fac:
+    print ('Facility with most current confirmed detainee cases:',ele,'w/',curr_max,"cases")
 
 detdeath_max = immfinal_df[dt + ':Detainee deaths'].max()
 death_max_fac = immfinal_df.loc[immfinal_df[dt + ':Detainee deaths'] == detdeath_max]
@@ -143,24 +164,6 @@ staffcon_max = immfinal_df[dt + ':Staff Confirmed Cases'].max()
 staffcon_max_fac = immfinal_df.loc[immfinal_df[dt + ':Staff Confirmed Cases'] == staffcon_max]
 staffcon_max_fac = staffcon_max_fac ['Custody/AOR/Facility'].item()
 print ('Facility with most staff cases:',staffcon_max_fac,'w/',staffcon_max,"cases")
-
-#Create CSV File of Updated ICE COVID19 Data w/ Historical Data
-df = pd.read_csv('imm_df.csv') 
-immfinal_df= pd.merge(df, immfinal_df, on='Custody/AOR/Facility', how='outer')
-columns = immfinal_df.columns.tolist()
-columns.remove('Custody/AOR/Facility')
-columns_r = columns[::-1]
-columns_r.insert(0,'Custody/AOR/Facility')
-immfinal_dfr = immfinal_df[columns_r]
-
-# CSV File with Time Ascending 
-path = os.getcwd() + '/imm_df.csv'
-immfinal_df.to_csv (path, index = False, header=True)
-
-# CSV File with Data Backward in time 
-path2 = os.getcwd() + '/immdet_df.csv'
-immfinal_dfr.to_csv (path2, index = False, header=True)
-
 
 
 
