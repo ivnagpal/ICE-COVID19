@@ -18,7 +18,7 @@ soup = BeautifulSoup(response.text, 'lxml')
 #Information on latest ICE Update
 p_list = soup.findAll ('p')
 p_list_txt = [txt.get_text() for txt in p_list]
-detainee_update = p_list_txt[79].replace('Updated','').strip()
+detainee_update = p_list_txt[120].replace('Updated','').strip()
 detainee_update_string = 'ICE Detainee Data Last Updated on:' + ' ' + detainee_update
 print (detainee_update_string)
 
