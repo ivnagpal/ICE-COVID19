@@ -38,7 +38,7 @@ field_office = ['Atlanta Field Office','Baltimore Field Office','Boston Field Of
                 'New Orleans Field Office','New York City Field Office','Philadelphia Field Office',
                 'Phoenix Field Office','Salt Lake City Field Office','San Antonio Field Office',
                 'San Diego Field Office','San Francisco Field Office','Seattle Field Office',
-                'St. Paul Field Office','Washington D.C. Field Office']
+                'St. Paul Field Office','Washington D.C. Field Office','Endeavors 5']
 
 
 covid_detain = [ele for ele in covid_detain if ele not in field_office]
